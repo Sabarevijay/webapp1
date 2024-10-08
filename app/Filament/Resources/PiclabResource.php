@@ -21,7 +21,7 @@ class PiclabResource extends Resource
 
     protected static ?string $navigationGroup = 'Control Panel';
 
-    protected static ?string $navigationLabel = 'BIT Students';
+    protected static ?string $navigationLabel = 'BIT Student';
 
     protected static ?int $navigationSort = 1;
 
