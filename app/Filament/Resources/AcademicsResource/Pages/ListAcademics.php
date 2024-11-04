@@ -27,11 +27,11 @@ class ListAcademics extends ListRecords
             return parent::getTableQuery();
         }
         if (Auth::user()->hasRole('student')) {
-            return parent::getTableQuery()->where('user_id', Auth::id());
+            return parent::getTableQuery()->where('Reg no', Auth::User()->reg_number);
         }
         if (Auth::user()->hasRole('Mentor')) {
             // Mentors see leaves of their allocated students
-            return parent::getTableQuery()->whereIn('user_id', function ($subQuery) {
+            return parent::getTableQuery()->whereIn('Reg no', function ($subQuery) {
                 $subQuery->select('id')
                     // ->from('students')
                     // ->where('mentor_id', Auth::id());

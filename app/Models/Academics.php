@@ -8,17 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Academics extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'subject_name',
-        'semester',
-        'grade',
-        'status',
-        'user_id',
+          'Reg no',
+          'Student name',
+          'Dept',
+          'Course Code',
+          'Course Title',
+          'Exam Name',
+          'Semester',
+          'Total Mark'    
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

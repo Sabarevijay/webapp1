@@ -23,30 +23,30 @@ class AcademicsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('subject_name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('semester')
-                    ->label('Year')
-                    ->options([
-                        'I' => 'I',
-                        'II' => 'II',
-                        'III' => 'III',
-                        'IV' => 'IV',
-                        'V' => 'V',
-                        'VI' => 'VI',
-                        'VII' => 'VII',
-                        'VIII' => 'VIII', ]),
-                Forms\Components\TextInput::make('grade')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        'Pass' => 'Pass',
-                        'Arrear' => 'Arrear', ]),
-                Forms\Components\Hidden::make('user_id')
-                    ->default(Auth::id()),
+                // Forms\Components\TextInput::make('subject_name')
+                //     ->required()
+                //     ->maxLength(255),
+                // Forms\Components\Select::make('semester')
+                //     ->label('Year')
+                //     ->options([
+                //         'I' => 'I',
+                //         'II' => 'II',
+                //         'III' => 'III',
+                //         'IV' => 'IV',
+                //         'V' => 'V',
+                //         'VI' => 'VI',
+                //         'VII' => 'VII',
+                //         'VIII' => 'VIII', ]),
+                // Forms\Components\TextInput::make('grade')
+                //     ->required()
+                //     ->maxLength(255),
+                // Forms\Components\Select::make('status')
+                //     ->label('Status')
+                //     ->options([
+                //         'Pass' => 'Pass',
+                //         'Arrear' => 'Arrear', ]),
+                // Forms\Components\Hidden::make('user_id')
+                //     ->default(Auth::id()),
             ]);
     }
 
@@ -57,18 +57,19 @@ class AcademicsResource extends Resource
         $isAdmin = $user && $user->hasRole('student'); // Adjust this line based on your role checking method
 
         $columns = [
-            Tables\Columns\TextColumn::make('subject_name')->searchable(),
-            Tables\Columns\TextColumn::make('semester')->searchable(),
-            Tables\Columns\TextColumn::make('grade')->searchable(),
-            Tables\Columns\TextColumn::make('status')->searchable(),
+            Tables\Columns\TextColumn::make('Course Code')->searchable(),
+            Tables\Columns\TextColumn::make('Course Title')->searchable(),
+            Tables\Columns\TextColumn::make('Exam Name')->searchable(),
+            Tables\Columns\TextColumn::make('Semester')->searchable(),
+            Tables\Columns\TextColumn::make('Total Mark')->searchable(),
 
         ];
 
         if (! $isAdmin) {
             $columns = array_merge(
                 //  [Tables\Columns\TextColumn::make('user_id')->searchable()],
-                [Tables\Columns\TextColumn::make('user.name')->label('Student Name')],
-                [Tables\Columns\TextColumn::make('user.email')->label('Email Id')],
+                [Tables\Columns\TextColumn::make('Student name')->searchable()->label('Student Name')],
+                [Tables\Columns\TextColumn::make('Reg no')->searchable()->label('Reg no')],
                 $columns
             );
         }

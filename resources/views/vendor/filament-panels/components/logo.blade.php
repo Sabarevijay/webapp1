@@ -1,4 +1,4 @@
 <img
-src="{{asset('images/logo4.png')}}"
+src="{{asset('images/logo4-bg.png')}}"
 alt="Logo BIT"
 />
